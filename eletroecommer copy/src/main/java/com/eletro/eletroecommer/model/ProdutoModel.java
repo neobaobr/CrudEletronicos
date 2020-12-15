@@ -27,7 +27,7 @@ private String nome;
 
 
 	@NotBlank
-	@Size(min = 4, max = 500)
+	@Size(min = 2, max = 500)
 private double preco;
 
 	@NotBlank

@@ -51,6 +51,17 @@ public class ProdutoController {
 	public ResponseEntity<ProdutoModel> put(@RequestBody ProdutoModel nome) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(nome));
 	}
+	
+	@GetMapping("/preco/{preco1}/{preco2}")
+	public ResponseEntity<List<ProdutoModel>> GetbyPreco (@PathVariable double preco1, double preco2){
+		return ResponseEntity.ok(repository.findAllByPrecoBetween(preco1, preco2));
+	}
+	
+	@GetMapping("/prec0/{preco}/{descricao}")
+	public ResponseEntity<List<ProdutoModel>> GetbyPreco (@PathVariable String descricao, @PathVariable double preco){
+		return ResponseEntity.ok(repository.findAllByPrecoMenor(descricao, preco));
+	}
+	
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
